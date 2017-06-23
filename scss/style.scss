@@ -88,7 +88,7 @@ page[size="A4"] {
     margin: 0.25in;
 }
 
-@media print {
+@media print { 
     body {
         margin: 0.25in 0 0;
         page-break-after: auto;
@@ -99,11 +99,11 @@ page[size="A4"] {
     #action-container {
         display: none;
     }
-    .pawn-container {
+    .pawn-container{
         .pawn {
             img {
                 z-index: -999;
             }
         }
-    }
+    } 
 }
