@@ -2,31 +2,30 @@ new Vue({
 	el: '#app',
 	data: {
 		numberOfPawns: 0,
-		image: ''
+		images: []
 	},
 	methods: {
-		onFileChange(e) {
+		loadingImages(e) {
 			var files = e.target.files || e.dataTransfer.files;
 			if (!files.length)
 				return;
-			this.createImage(files[0]);
+			this.createImage(files);
 		},
-		createImage(file) {
-			var image = new Image();
-			var reader = new FileReader();
+		createImage(files) {
 			var vm = this;
-
-			reader.onload = (e) => {
-				vm.image = e.target.result;
-			};
-			reader.readAsDataURL(file);
+			for (var i = 0; i < files.length; i++) {
+				var reader = new FileReader();
+				reader.onload = (e) => {
+					vm.images.push(e.target.result);
+				};
+				reader.readAsDataURL(files[i]);
+			}
 		},
-		removeImage: function (e) {
-			this.image = '';
+		clearImages() {
+			this.images = [];
 		},
-		updatePawns: function (e) {
+		updatePawns(e) {
 			this.numberOfPawns = +e.target.value;
-			console.log(this.numberOfPawns);
 		}
 	}
 })
