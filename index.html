@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pawns Generator</title>
+	<script src="https://unpkg.com/vue"></script>
+	<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="app">
+		<div id="action-container">
+			<div v-if="!image">
+				<h2>Select an image</h2>
+				<input type="file" @change="onFileChange">
+			</div>
+			<div v-else>
+				<img :src="image" />
+				<button @click="removeImage">Remove image</button>
+			</div>
+			<input type="number" @click="updatePawns" />
+		</div>
+		<div v-for="n of numberOfPawns" class="pawn-container">
+			<div class="back">
+				<div class="base">
+				</div>
+				<div class="pawn-wrapper">
+					<div class="pawn">
+						<img :src="image" />
+					</div>
+				</div>
+			</div>
+			<div class="front">
+				<div class="pawn-wrapper">
+					<div class="pawn">
+						<img :src="image" />
+					</div>
+				</div>
+				<div class="base">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./app.js"></script>
+</body>
+
+</html>
