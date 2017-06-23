@@ -23,6 +23,7 @@ new Vue({
 		},
 		removeImage: function (e) {
 			this.image = '';
+			this.numberOfPawns = 0;
 		},
 		updatePawns: function (e) {
 			this.numberOfPawns = +e.target.value;
