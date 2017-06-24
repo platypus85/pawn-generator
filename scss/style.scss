@@ -3,7 +3,8 @@ $two-square: 2in;
 $two-half-square: 2.5in;
 $three-square: 3in;
 $four-square: 4in;
-
+$fold-border: 1pt solid #e4e4e4;
+$cut-border: 1pt solid #c1c1c1;
 html,
 body {
     width: 210mm;
@@ -11,7 +12,7 @@ body {
 }
 
 .pawn-container {
-    border: 1px solid #c1c1c1 !important;
+    border: $cut-border !important;
     display: inline-block;
     margin: 0 2mm;
     .base {
@@ -34,7 +35,7 @@ body {
     }
     .back {
         .pawn {
-            border-bottom: 1pt dashed #e4e4e4 !important;
+            border-bottom: $fold-border !important;
             img {
                 -ms-transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
                 -webkit-transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
@@ -42,7 +43,7 @@ body {
             }
         }
         .base {
-            border-bottom: 1pt dashed #e4e4e4 !important;
+            border-bottom: $fold-border !important;
             &:after {
                 content: "";
                 position: absolute;
@@ -51,7 +52,7 @@ body {
                 bottom: 0;
                 width: 50%;
                 right: 0;
-                border-top: 1px solid #c1c1c1 !important;
+                border-top: $cut-border !important;
             }
         }
     }
@@ -63,7 +64,7 @@ body {
             }
         }
         .base {
-            border-top: 1pt dashed #e4e4e4 !important;
+            border-top: $fold-border !important;
             &:after {
                 content: "";
                 position: absolute;
@@ -72,12 +73,11 @@ body {
                 bottom: 0;
                 width: 50%;
                 left: 0;
-                border-top: 1px solid #c1c1c1 !important;
+                border-top: $cut-border !important;
             }
         }
     }
-     &.tiny {
-        width: $one-square;
+    &.tiny {
         .pawn {
             width: $one-square;
             height: $one-square;
@@ -88,7 +88,6 @@ body {
         }
     }
     &.small {
-        width: $one-square;
         .pawn {
             width: $one-square;
             height: $two-square;
@@ -99,7 +98,6 @@ body {
         }
     }
     &.medium {
-        width: $one-square;
         .pawn {
             width: $one-square;
             height: $two-square;
@@ -110,7 +108,6 @@ body {
         }
     }
     &.large {
-        width: $two-square;
         .pawn {
             width: $two-square;
             height: $two-square;
@@ -121,7 +118,6 @@ body {
         }
     }
     &.huge {
-        width: $three-square;
         .pawn {
             width: $three-square;
             height: $two-half-square;
@@ -131,15 +127,25 @@ body {
             height: $three-square;
         }
     }
-    &.gargantuan{
-         width: $four-square;
-        .pawn {
-            width: $four-square;
-            height: $three-square;
+    &.gargantuan {
+        .front,
+        .back {
+            display: inline-block;
+            overflow: hidden;
+            .pawn {
+                width: $four-square;
+                height: $four-square;
+            }
+            .base {
+                width: $four-square;
+                height: $four-square;
+            }
         }
-        .base {
-            width: $four-square;
-            height: $four-square;
+        .back{
+            border-right: 1pt solid #c1c1c1 !important;
+            .pawn{
+                border-bottom:none !important;
+            }
         }
     }
 }
