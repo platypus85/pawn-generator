@@ -2,7 +2,8 @@ new Vue({
 	el: '#app',
 	data: {
 		numberOfPawns: 0,
-		image: ''
+		image: '',
+		size:''
 	},
 	methods: {
 		onFileChange(e) {

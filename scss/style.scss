@@ -1,112 +1,179 @@
- html,
- body {
-     width: 210mm;
-     height: 297mm;
- }
+$one-square: 1in;
+$two-square: 2in;
+$two-half-square: 2.5in;
+$three-square: 3in;
+$four-square: 4in;
 
- .pawn-container {
-     width: 1in;
-     border: 1px solid #c1c1c1;
-     display: inline-block;
-     margin: 0 2mm;
-     .base {
-         width: 1in;
-         height: 1in;
-         position: relative;
-     }
-     .pawn {
-         width: 1in;
-         height: 1.85in;
-         position: relative;
-         overflow: hidden;
-         img {
-             position: absolute;
-             left: 50%;
-             top: 50%;
-             height: 85%;
-             width: auto;
-             z-index: -999;
-             -webkit-transform: translate(-50%, -50%);
-             -ms-transform: translate(-50%, -50%);
-             transform: translate(-50%, -50%);
-         }
-     }
-     .back {
-         border-bottom: 1px dashed #dadada;
-         .pawn {
-             border-top: 1px dashed #dadada;
-             img {
-                 -ms-transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
-                 -webkit-transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
-                 transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
-             }
-         }
-         .base {
-             &:after {
-                 content: "";
-                 position: absolute;
-                 z-index: -1;
-                 top: 50%;
-                 bottom: 0;
-                 width: 50%;
-                 right: 0;
-                 border-top: 1px solid #c1c1c1;
-             }
-         }
-     }
-     .front {
-         .pawn {
-             border-bottom: 1px dashed #dadada;
-             img {
-                 bottom: 5px;
-                 position: absolute;
-             }
-         }
-         .base {
-             &:after {
-                 content: "";
-                 position: absolute;
-                 z-index: -1;
-                 top: 50%;
-                 bottom: 0;
-                 width: 50%;
-                 left: 0;
-                 border-top: 1px solid #c1c1c1;
-             }
-         }
-     }
- }
+html,
+body {
+    width: 210mm;
+    height: 297mm;
+}
 
- page[size="A4"] {
-     background: white;
-     width: 210mm;
-     height: 297mm;
-     ;
-     display: block;
- }
+.pawn-container {
+    border: 1px solid #c1c1c1 !important;
+    display: inline-block;
+    margin: 0 2mm;
+    .base {
+        position: relative;
+    }
+    .pawn {
+        position: relative;
+        overflow: hidden;
+        img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 85%;
+            width: auto;
+            z-index: -999;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    }
+    .back {
+        .pawn {
+            border-bottom: 1pt dashed #e4e4e4 !important;
+            img {
+                -ms-transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
+                -webkit-transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
+                transform: translate(-50%, -50%) rotate(180deg) scaleX(-1);
+            }
+        }
+        .base {
+            border-bottom: 1pt dashed #e4e4e4 !important;
+            &:after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: 50%;
+                bottom: 0;
+                width: 50%;
+                right: 0;
+                border-top: 1px solid #c1c1c1 !important;
+            }
+        }
+    }
+    .front {
+        .pawn {
+            img {
+                bottom: 5px;
+                position: absolute;
+            }
+        }
+        .base {
+            border-top: 1pt dashed #e4e4e4 !important;
+            &:after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: 50%;
+                bottom: 0;
+                width: 50%;
+                left: 0;
+                border-top: 1px solid #c1c1c1 !important;
+            }
+        }
+    }
+     &.tiny {
+        width: $one-square;
+        .pawn {
+            width: $one-square;
+            height: $one-square;
+        }
+        .base {
+            width: $one-square;
+            height: $one-square;
+        }
+    }
+    &.small {
+        width: $one-square;
+        .pawn {
+            width: $one-square;
+            height: $two-square;
+        }
+        .base {
+            width: $one-square;
+            height: $one-square;
+        }
+    }
+    &.medium {
+        width: $one-square;
+        .pawn {
+            width: $one-square;
+            height: $two-square;
+        }
+        .base {
+            width: $one-square;
+            height: $one-square;
+        }
+    }
+    &.large {
+        width: $two-square;
+        .pawn {
+            width: $two-square;
+            height: $two-square;
+        }
+        .base {
+            width: $two-square;
+            height: $two-square;
+        }
+    }
+    &.huge {
+        width: $three-square;
+        .pawn {
+            width: $three-square;
+            height: $two-half-square;
+        }
+        .base {
+            width: $three-square;
+            height: $three-square;
+        }
+    }
+    &.gargantuan{
+         width: $four-square;
+        .pawn {
+            width: $four-square;
+            height: $three-square;
+        }
+        .base {
+            width: $four-square;
+            height: $four-square;
+        }
+    }
+}
 
- @page {
-     margin: 0.25in;
- }
+page[size="A4"] {
+    background: white;
+    width: 210mm;
+    height: 297mm;
+    ;
+    display: block;
+}
 
- @media print {
-     body {
-         margin: 0.25in 0 0;
-         width: 210mm;
-         height: auto; 
-         page-break-after: auto;
-     }
-     pre {
-         white-space: pre-wrap;
-     }
-     #action-container {
-         display: none;
-     }
-     .pawn-container {
-         .pawn {
-             img {
-                 z-index: -999;
-             }
-         }
-     }
- }
+@page {
+    margin: 0.25in;
+}
+
+@media print {
+    body {
+        margin: 0.25in 0 0;
+        width: 210mm;
+        height: auto;
+        page-break-after: auto;
+    }
+    pre {
+        white-space: pre-wrap;
+    }
+    #action-container {
+        display: none;
+    }
+    .pawn-container {
+        .pawn {
+            img {
+                z-index: -999;
+            }
+        }
+    }
+}

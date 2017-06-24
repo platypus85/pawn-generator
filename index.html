@@ -19,24 +19,32 @@
 				<img :src="image" />
 				<button @click="removeImage">Remove image</button>
 			</div>
-			<input type="number" @click="updatePawns" />
+			<input type="number" @change="updatePawns" />
+			<select v-model="size">
+				<option value="tiny">Tiny</option>
+				<option value="small">Small</option>
+				<option value="medium">Medium</option>
+				<option value="large">Large</option>
+				<option value="huge">Huge</option>
+				<option value="gargantuan">Gargantuan</option>
+			</select>
 		</div>
-		<div v-for="n of numberOfPawns" class="pawn-container">
+		<div v-for="n of numberOfPawns" class="pawn-container" v-bind:class="size">
 			<div class="back">
 				<div class="base">
 				</div>
-				<div class="pawn-wrapper">
+				
 					<div class="pawn">
 						<img :src="image" />
 					</div>
-				</div>
+			
 			</div>
 			<div class="front">
-				<div class="pawn-wrapper">
+				
 					<div class="pawn">
 						<img :src="image" />
 					</div>
-				</div>
+				
 				<div class="base">
 				</div>
 			</div>
